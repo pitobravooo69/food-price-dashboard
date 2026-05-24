@@ -684,7 +684,7 @@ with tabs[0]:
         ])
         labels = ["C0", "C1", "C2", "C3"]
         fig_cm = px.imshow(cm_data, text_auto=True, x=labels, y=labels,
-                            color_continuous_scale=[[0,"#1a0a0a"],[0.5,"#7f1d1d"],[1,"#dc2626"]])
+                            color_continuous_scale=["#1a0a0a", "#7f1d1d", "#dc2626"])
         fig_cm.update_layout(
             paper_bgcolor="rgba(13,4,5,0)",
             plot_bgcolor="rgba(20,3,4,0.3)",
@@ -780,7 +780,7 @@ with tabs[1]:
             "Records": [100000, 85000, 75000, 62000, 55000]
         })
         fig_bar = px.bar(negara, x="Country", y="Records",
-                          color="Records", color_continuous_scale=[[0,"#7f1d1d"],[1,"#ef4444"]])
+                          color="Records", color_continuous_scale=["#7f1d1d", "#ef4444"])
         fig_bar.update_layout(**dark_layout, height=350, showlegend=False)
         fig_bar.update_traces(marker_line_width=0)
         st.plotly_chart(fig_bar, use_container_width=True)
@@ -793,8 +793,13 @@ with tabs[1]:
             "Commodity": ["Rice", "Maize", "Oil", "Sugar", "Wheat", "Beans"],
             "Avg Price (USD)": [320, 210, 580, 275, 190, 340]
         })
-        fig_com = px.bar(commodity_data, x="Commodity", y="Avg Price (USD)",
-                          color="Avg Price (USD)", color_continuous_scale=[[0,"#7f1d1d"],[1,"#ef4444"]])
+        fig_com = px.bar(
+            commodity_data,
+            x="Commodity",
+            y="Avg Price (USD)",
+            color="Avg Price (USD)",
+            color_continuous_scale=["#7f1d1d", "#ef4444"]
+        )
         fig_com.update_layout(**dark_layout, height=350, showlegend=False)
         fig_com.update_traces(marker_line_width=0)
         st.plotly_chart(fig_com, use_container_width=True)
@@ -863,7 +868,7 @@ with tabs[2]:
             "Missing (%)": [2.1, 0.5, 0.0, 4.3, 1.2]
         })
         fig_mv = px.bar(mv, x="Missing (%)", y="Column", orientation="h",
-                         color="Missing (%)", color_continuous_scale=[[0,"#7f1d1d"],[1,"#ef4444"]])
+                         color="Missing (%)", color_continuous_scale=["#7f1d1d", "#ef4444"])
         fig_mv.update_layout(**dark_layout, height=300, showlegend=False)
         st.plotly_chart(fig_mv, use_container_width=True)
         st.markdown('</div>', unsafe_allow_html=True)
@@ -875,7 +880,7 @@ with tabs[2]:
         "Importance": [0.42, 0.31, 0.14, 0.08, 0.05]
     })
     fig_fi = px.bar(fi, x="Importance", y="Feature", orientation="h",
-                     color="Importance", color_continuous_scale=[[0,"#7f1d1d"],[1,"#ef4444"]])
+                     color="Importance", color_continuous_scale=["#7f1d1d", "#ef4444"])
     fig_fi.update_layout(**dark_layout, height=280, showlegend=False)
     st.plotly_chart(fig_fi, use_container_width=True)
     st.markdown('</div>', unsafe_allow_html=True)
@@ -992,7 +997,7 @@ with tabs[4]:
             "Importance": [0.45, 0.28, 0.13, 0.09, 0.05]
         })
         fig_rf = px.bar(rf_fi, x="Importance", y="Feature", orientation="h",
-                         color="Importance", color_continuous_scale=[[0,"#7f1d1d"],[1,"#ef4444"]])
+                         color="Importance", color_continuous_scale=["#7f1d1d", "#ef4444"])
         fig_rf.update_layout(**dark_layout, height=380, showlegend=False)
         st.plotly_chart(fig_rf, use_container_width=True)
         st.markdown('</div>', unsafe_allow_html=True)
@@ -1033,7 +1038,7 @@ with tabs[5]:
         cm_data = np.array([[6847,1123,398,86],[812,13872,748,153],[421,912,8919,897],[98,231,643,3840]])
         labels = ["Cluster 0","Cluster 1","Cluster 2","Cluster 3"]
         fig_cm2 = px.imshow(cm_data, text_auto=True, x=labels, y=labels,
-                              color_continuous_scale=[[0,"#0f0f0f"],[0.4,"#7f1d1d"],[1,"#dc2626"]])
+                              color_continuous_scale=["#0f0f0f", "#7f1d1d", "#dc2626"])
         fig_cm2.update_layout(paper_bgcolor="rgba(13,4,5,0)", plot_bgcolor="rgba(20,3,4,0.3)",
                                font=dict(color="#9ca3af"), height=380, margin=dict(l=0,r=0,t=10,b=0))
         fig_cm2.update_traces(textfont=dict(color="white", size=12))
@@ -1223,7 +1228,7 @@ with tabs[7]:
                 y_pred = np.random.randint(0, 4, SAMPLE)
                 cm_batch = confusion_matrix(y_true, y_pred)
                 fig_cm3 = px.imshow(cm_batch, text_auto=True,
-                                     color_continuous_scale=[[0,"#0f0f0f"],[0.5,"#7f1d1d"],[1,"#dc2626"]],
+                                     color_continuous_scale=["#0f0f0f", "#7f1d1d", "#dc2626"],
                                      x=["C0","C1","C2","C3"], y=["C0","C1","C2","C3"])
                 fig_cm3.update_layout(paper_bgcolor="rgba(13,4,5,0)", font=dict(color="#9ca3af"),
                                        height=380, title=f"Confusion Matrix (sample {SAMPLE:,})",
